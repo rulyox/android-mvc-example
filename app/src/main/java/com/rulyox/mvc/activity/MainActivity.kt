@@ -1,7 +1,8 @@
-package com.rulyox.mvc
+package com.rulyox.mvc.activity
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
+import com.rulyox.mvc.R
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity: AppCompatActivity() {
