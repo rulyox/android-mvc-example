@@ -17,9 +17,14 @@ class MainActivity: AppCompatActivity() {
 
         private const val RESULT_ADD = 1
 
-    }
+        private val memoAdapter: MemoAdapter = MemoAdapter()
 
-    private val memoAdapter: MemoAdapter = MemoAdapter()
+        fun updateAdapter() {
+            memoAdapter.setList(MemoStore.getList())
+            memoAdapter.notifyDataSetChanged()
+        }
+
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -35,8 +40,7 @@ class MainActivity: AppCompatActivity() {
 
         if(resultCode == Activity.RESULT_OK && requestCode == RESULT_ADD) {
 
-            memoAdapter.setList(MemoStore.getMemoList())
-            memoAdapter.notifyDataSetChanged()
+            updateAdapter()
 
         }
 

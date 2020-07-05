@@ -4,7 +4,7 @@ object MemoStore {
 
     private var memoList: ArrayList<Memo> = ArrayList()
 
-    fun getMemoList(): ArrayList<Memo> {
+    fun getList(): ArrayList<Memo> {
         return memoList
     }
 
@@ -12,19 +12,12 @@ object MemoStore {
         return memoList.size
     }
 
-    fun addMemo(memo: Memo) {
+    fun add(memo: Memo) {
         memoList.add(memo)
     }
 
-    fun deleteMemo(id: Int) {
-
-        for(memo in memoList) {
-            if(memo.id == id) {
-                memoList.remove(memo)
-                return
-            }
-        }
-
+    fun delete(position: Int) {
+        memoList.removeAt(position)
     }
 
 }

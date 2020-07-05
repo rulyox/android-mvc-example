@@ -27,7 +27,7 @@ class AddActivity: Activity() {
 
             // add memo to memo store
             val memo = Memo(MemoStore.getNewId(), title, text)
-            MemoStore.addMemo(memo)
+            MemoStore.add(memo)
 
             setResult(RESULT_OK, Intent())
             finish()
