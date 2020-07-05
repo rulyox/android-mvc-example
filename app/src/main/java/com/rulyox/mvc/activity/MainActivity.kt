@@ -1,5 +1,6 @@
 package com.rulyox.mvc.activity
 
+import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
@@ -7,11 +8,16 @@ import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.rulyox.mvc.R
 import com.rulyox.mvc.adapter.MemoAdapter
-import com.rulyox.mvc.memo.Memo
 import com.rulyox.mvc.memo.MemoStore
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity: AppCompatActivity() {
+
+    companion object {
+
+        private const val RESULT_ADD = 1
+
+    }
 
     private val memoAdapter: MemoAdapter = MemoAdapter()
 
@@ -22,12 +28,17 @@ class MainActivity: AppCompatActivity() {
 
         initUI()
 
-        // test
-        MemoStore.addMemo(Memo(1, "memo1", "hello world"))
-        MemoStore.addMemo(Memo(2, "memo2", "hello world"))
-        MemoStore.addMemo(Memo(3, "memo3", "hello world"))
-        memoAdapter.setList(MemoStore.getMemoList())
-        memoAdapter.notifyDataSetChanged()
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+
+        if(resultCode == Activity.RESULT_OK && requestCode == RESULT_ADD) {
+
+            memoAdapter.setList(MemoStore.getMemoList())
+            memoAdapter.notifyDataSetChanged()
+
+        }
 
     }
 
@@ -40,8 +51,10 @@ class MainActivity: AppCompatActivity() {
 
         // add button
         main_fab.setOnClickListener {
+
             val addIntent = Intent(this@MainActivity, AddActivity::class.java)
-            startActivity(addIntent)
+            startActivityForResult(addIntent, RESULT_ADD)
+
         }
 
     }

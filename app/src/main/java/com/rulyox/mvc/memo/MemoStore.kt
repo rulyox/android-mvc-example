@@ -8,6 +8,10 @@ object MemoStore {
         return memoList
     }
 
+    fun getNewId(): Int {
+        return memoList.size
+    }
+
     fun addMemo(memo: Memo) {
         memoList.add(memo)
     }
