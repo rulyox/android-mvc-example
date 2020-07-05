@@ -1,5 +1,6 @@
 package com.rulyox.mvc.activity
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.DividerItemDecoration
@@ -36,6 +37,12 @@ class MainActivity: AppCompatActivity() {
         main_recycler.layoutManager = LinearLayoutManager(this)
         main_recycler.addItemDecoration(DividerItemDecoration(main_recycler.context, DividerItemDecoration.VERTICAL))
         main_recycler.adapter = memoAdapter
+
+        // add button
+        main_fab.setOnClickListener {
+            val addIntent = Intent(this@MainActivity, AddActivity::class.java)
+            startActivity(addIntent)
+        }
 
     }
 
