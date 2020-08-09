@@ -52,12 +52,14 @@ class MemoAdapter(val clickListener: ItemClickListener): RecyclerView.Adapter<Me
 
     override fun onBindViewHolder(viewholder: MemoViewHolder, position: Int) {
 
-        if(memoList == null) return
+        memoList?.let {
 
-        val memo = memoList!![position]
+            val memo = it[position]
 
-        viewholder.title.text = memo.title
-        viewholder.text.text = memo.text
+            viewholder.title.text = memo.title
+            viewholder.text.text = memo.text
+
+        }
 
     }
 
